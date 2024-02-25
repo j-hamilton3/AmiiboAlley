@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_25_232612) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_25_234205) do
   create_table "amiibo_series", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -18,4 +18,32 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_25_232612) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "amiibos", force: :cascade do |t|
+    t.string "name"
+    t.datetime "release_date"
+    t.integer "amiibo_series_id", null: false
+    t.integer "game_series_id", null: false
+    t.integer "character_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["amiibo_series_id"], name: "index_amiibos_on_amiibo_series_id"
+    t.index ["character_id"], name: "index_amiibos_on_character_id"
+    t.index ["game_series_id"], name: "index_amiibos_on_game_series_id"
+  end
+
+  create_table "characters", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "game_series", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "amiibos", "amiibo_series"
+  add_foreign_key "amiibos", "characters"
+  add_foreign_key "amiibos", "game_series"
 end

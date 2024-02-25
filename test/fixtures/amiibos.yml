@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  release_date: 2024-02-25 17:42:05
+  amiibo_series: one
+  game_series: one
+  character: one
+
+two:
+  name: MyString
+  release_date: 2024-02-25 17:42:05
+  amiibo_series: two
+  game_series: two
+  character: two
