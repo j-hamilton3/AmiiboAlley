@@ -1,5 +1,6 @@
-<h1><%= @character.name %> Amiibos</h1>
+<h1 class="title is-4"><%= @character.name %> Amiibos</h1>
 <h2>Displaying <%= @character.amiibos.count %> Amiibo(s):</h2>
+<br>
 
 <ul>
   <% @character.amiibos.order(:name).each do |amiibo| %>

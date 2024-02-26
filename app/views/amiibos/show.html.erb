@@ -1,8 +1,8 @@
-<h1><%= @amiibo.name %></h1>
-<img src="<%= @amiibo.image%>">
+<h1 class="title is-4"><%= @amiibo.name %></h1>
+<img width="200px" src="<%= @amiibo.image%>">
 <ul>
-  <li>Character: <%= @amiibo.character.name %></li>
+  <li>Character: <%= link_to @amiibo.character.name, @amiibo.character %></li>
   <li>Amiibo Series: <%= link_to @amiibo.amiibo_series.name, @amiibo.amiibo_series %></li>
-  <li>Game Series: <%= @amiibo.game_series.name %></li>
-  <li>Release Date (NA): <%= @amiibo.release_date %></li>
+  <li>Game Series: <%= link_to @amiibo.game_series.name, @amiibo.game_series %></li>
+  <li>Release Date (NA): <%= @amiibo.release_date&.strftime("%B %d, %Y") %></li>
 </ul>
