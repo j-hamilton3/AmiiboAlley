@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_25_234205) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_26_013655) do
   create_table "amiibo_series", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -26,6 +26,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_25_234205) do
     t.integer "character_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
     t.index ["amiibo_series_id"], name: "index_amiibos_on_amiibo_series_id"
     t.index ["character_id"], name: "index_amiibos_on_character_id"
     t.index ["game_series_id"], name: "index_amiibos_on_game_series_id"
