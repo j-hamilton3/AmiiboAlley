@@ -23,11 +23,21 @@ puts "Adding Amiibos..."
 file_paths.each do |path|
   puts "File path #{path}"
   CSV.foreach(path, headers: true, encoding: "utf-8") do |row|
-    amiibo_series = AmiiboSeries.create(name: row["amiibo/amiiboSeries"])
-    game_series = GameSeries.create(name: row["amiibo/gameSeries"])
-    character = Character.create(name: row["amiibo/character"])
-    amiibo = Amiibo.create(name: row["amiibo/"])
+    amiibo_series = AmiiboSeries.find_or_create_by(name: row["amiibo/amiiboSeries"])
+    game_series = GameSeries.find_or_create_by(name: row["amiibo/gameSeries"])
+    character = Character.find_or_create_by(name: row["amiibo/character"])
+    amiibo = Amiibo.create(name: row["amiibo/name"],
+                           release_date: row["amiibo/release/na"],
+                           image: row["amiibo/image"],
+                           amiibo_series_id: amiibo_series.id,
+                           game_series_id: game_series.id,
+                           character_id: character.id)
   end
 end
 
-puts "Created #{Amiibo.count} Amiibos."
+puts "**********************************"
+puts "CREATED:"
+puts "*** #{Amiibo.count} Amiibos."
+puts "*** #{AmiiboSeries.count} Amiibo Series."
+puts "*** #{GameSeries.count} Game Series."
+puts "*** #{Character.count} Characters."
