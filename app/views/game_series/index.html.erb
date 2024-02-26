@@ -2,6 +2,6 @@
 
 <ul>
   <% @game_series.each do |i| %>
-  <li><%= link_to i.name, i %></li>
+  <li><%= link_to i.name, i %> (<%= i.amiibos.count %>)</li>
   <% end %>
 </ul>
