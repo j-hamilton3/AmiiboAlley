@@ -1,2 +1,9 @@
-<h1>Amiibos#index</h1>
-<p>Find me in app/views/amiibos/index.html.erb</p>
+<h1>Amiibos</h1>
+
+<ul>
+  <% @amiibos.each do |i| %>
+  <li><%= link_to i.name, i %></li>
+  <% end %>
+</ul>
+
+
