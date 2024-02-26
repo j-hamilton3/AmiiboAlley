@@ -1,0 +1,5 @@
+amiibo/amiiboSeries,amiibo/character,amiibo/gameSeries,amiibo/head,amiibo/image,amiibo/name,amiibo/release/au,amiibo/release/eu,amiibo/release/jp,amiibo/release/na,amiibo/tail,amiibo/type
+Kirby,Kirby,Kirby,1f000000,https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_1f000000-02540c02.png,Kirby,2016-06-11,2016-06-10,2016-04-28,2016-06-10,02540c02,Figure
+Kirby,Meta Knight,Kirby,1f010000,https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_1f010000-02550c02.png,Meta Knight,2016-06-11,2016-06-10,2016-04-28,2016-06-10,02550c02,Figure
+Kirby,Waddle Dee,Kirby,1f030000,https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_1f030000-02570c02.png,Waddle Dee,2016-06-11,2016-06-10,2016-04-28,2016-06-10,02570c02,Figure
+Kirby,King Dedede,Kirby,1f020000,https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_1f020000-02560c02.png,King Dedede,2016-06-11,2016-06-10,2016-04-28,2016-06-10,02560c02,Figure
