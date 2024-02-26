@@ -1,6 +1,6 @@
 class AmiibosController < ApplicationController
   def index
-    @amiibos = Amiibo.all
+    @amiibos = Amiibo.order(:name)
   end
 
   def show

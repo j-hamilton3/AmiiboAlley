@@ -1,6 +1,6 @@
 class GameSeriesController < ApplicationController
   def index
-    @game_series = GameSeries.all
+    @game_series = GameSeries.order(:name)
   end
 
   def show
