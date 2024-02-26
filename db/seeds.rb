@@ -21,7 +21,7 @@ file_paths = [
 puts "Adding Amiibos..."
 
 file_paths.each do |path|
-  puts "File path #{path}"
+  puts "Adding data from path: #{path}"
   CSV.foreach(path, headers: true, encoding: "utf-8") do |row|
     amiibo_series = AmiiboSeries.find_or_create_by(name: row["amiibo/amiiboSeries"])
     game_series = GameSeries.find_or_create_by(name: row["amiibo/gameSeries"])

@@ -1,0 +1,2 @@
+module AmiiboSeriesHelper
+end

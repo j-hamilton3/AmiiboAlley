@@ -1,0 +1,2 @@
+module AmiibosHelper
+end
