@@ -1,12 +1,9 @@
 Rails.application.routes.draw do
-  get 'game_series/index'
-  get 'game_series/show'
-  get 'characters/index'
-  get 'characters/show'
-  get 'amiibo_series/index'
-  get 'amiibo_series/show'
-  get 'amiibos/index'
-  get 'amiibos/show'
+  resources :amiibos, only: [:index, :show]
+  resources :amiibo_series, only: [:index, :show]
+  resources :game_series, only: [:index, :show]
+  resources :characters, only: [:index, :show]
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
