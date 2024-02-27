@@ -1,5 +1,11 @@
 <h1 class="title is-4">Game Series</h1>
 
+<div class="ml-3" >
+<%= paginate @game_series %>
+</div>
+
+<br>
+
 <ul>
   <% @game_series.each do |i| %>
   <li><%= link_to i.name, i %> (<%= i.amiibos.count %>)</li>

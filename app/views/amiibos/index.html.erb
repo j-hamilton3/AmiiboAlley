@@ -1,5 +1,11 @@
 <h1 class="title is-4">All Amiibos</h1>
 
+<div class="ml-3" >
+<%= paginate @amiibos %>
+</div>
+
+<br>
+
 <ul>
   <% @amiibos.each do |i| %>
   <li><%= link_to i.name, i %></li>

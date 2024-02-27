@@ -2,6 +2,7 @@
 
 <h1 class="title is-4"><%= @amiibo_series_show.name %> - Amiibo Series</h1>
 <h2>Displaying <%= @amiibo_series_show.amiibos.count %> Amiibos:</h2>
+
 <br>
 <ul>
   <% @amiibo_series_show.amiibos.order(:name).each do |amiibo| %>
