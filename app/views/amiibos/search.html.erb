@@ -1,0 +1,8 @@
+<h1 class="title is-4">"<%= params[:keywords] %>" Amiibos:</h1>
+<h2>Displaying <%= pluralize @amiibos.count, "Amiibo"%>:</h2>
+
+<ul>
+  <% @amiibos.each do |i| %>
+  <li><%= link_to i.name, i %></li>
+  <% end %>
+</ul>

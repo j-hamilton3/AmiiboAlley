@@ -6,4 +6,8 @@
     <li><%= link_to_unless_current "Characters", characters_path %></li>
     <li><%= link_to_unless_current "About", about_index_path %></li>
   </ul>
+  <%= form_with(url: search_amiibos_path, method: :get, local: true) do %>
+    <%= text_field_tag(:keywords, nil, class: "input", placeholder: 'Search for Amiibos')%>
+    <%= submit_tag('Search', class: 'button is-primary')%>
+  <% end %>
 </nav>

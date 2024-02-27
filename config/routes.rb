@@ -3,7 +3,12 @@ Rails.application.routes.draw do
   root to: "amiibos#index"
 
   resources :about, only: :index
-  resources :amiibos, only: [:index, :show]
+  resources :amiibos, only: [:index, :show] do
+    collection do
+      get "search"
+    end
+  end
+
   resources :amiibo_series, only: [:index, :show]
   resources :game_series, only: [:index, :show]
   resources :characters, only: [:index, :show]
