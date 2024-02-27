@@ -1,5 +1,7 @@
 <h1 class="title is-4">"<%= params[:keywords] %>" Amiibos:</h1>
+<h2 class="title is-6">Amiibo Series: <%= @category %></h2>
 <h2>Displaying <%= pluralize @amiibos.count, "Amiibo"%>:</h2>
+<br>
 
 <ul>
   <% @amiibos.each do |i| %>
