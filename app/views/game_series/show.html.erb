@@ -1,7 +1,7 @@
 <% content_for(:html_title) {@game_series_show.name} %>
 
 <h1 class="title is-4"><%= @game_series_show.name %> - Game Series</h1>
-<h2>Displaying <%= @game_series_show.amiibos.count %> Amiibo(s):</h2>
+<h2>Displaying <%= pluralize @game_series_show.amiibos.count, "Amiibo"%>:</h2>
 <br>
 
 <ul>
