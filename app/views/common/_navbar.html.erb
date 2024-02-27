@@ -1,0 +1,9 @@
+<nav>
+  <ul>
+    <li><%= link_to_unless_current "All Amiibos", root_path %></li>
+    <li><%= link_to_unless_current "Amiibo Series", amiibo_series_index_path %></li>
+    <li><%= link_to_unless_current "Game Series", game_series_index_path %></li>
+    <li><%= link_to_unless_current "Characters", characters_path %></li>
+    <li><%= link_to_unless_current "About", about_index_path %></li>
+  </ul>
+</nav>
