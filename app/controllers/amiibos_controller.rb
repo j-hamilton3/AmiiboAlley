@@ -15,10 +15,11 @@ class AmiibosController < ApplicationController
                         .where("amiibo_series.id = ? AND amiibos.name LIKE ?",
                                 params[:amiibo_series_id], wildcard_search)
                                 .page(params[:page])
+                                .per(22)
       @category = AmiiboSeries.find(params[:amiibo_series_id]).name
     else
       # Search across all Amiibos
-      @amiibos = Amiibo.where("name LIKE ?", wildcard_search).page(params[:page])
+      @amiibos = Amiibo.where("name LIKE ?", wildcard_search).page(params[:page]).per(22)
       @category = "All Amiibos"
     end
   end

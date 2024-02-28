@@ -1,16 +1,18 @@
-<h1 class="title is-4">🔎"<%= params[:keywords] %>" Amiibos:</h1>
-<h2 class="title is-6">Amiibo Series: <%= @category %></h2>
-<h2>Displaying <%= pluralize @amiibos.total_count, "Amiibo"%>:</h2>
-<br>
+<div class="container">
+  <h1 class="title is-4">🔎"<%= params[:keywords] %>" Amiibos:</h1>
+  <h2 class="title is-6">Amiibo Series: <%= @category %></h2>
+  <h2>Displaying <%= pluralize @amiibos.total_count, "Amiibo"%>:</h2>
+  <br>
 
-<div class="ml-3" >
-<%= paginate @amiibos %>
+  <div class="ml-3" >
+  <%= paginate @amiibos %>
+  </div>
+
+  <br>
+
+  <ul>
+    <% @amiibos.each do |i| %>
+    <li><%= link_to i.name, i %></li>
+    <% end %>
+  </ul>
 </div>
-
-<br>
-
-<ul>
-  <% @amiibos.each do |i| %>
-  <li><%= link_to i.name, i %></li>
-  <% end %>
-</ul>
