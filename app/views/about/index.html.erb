@@ -1,16 +1,18 @@
-<h1 class="title is-4">Data Project Description</h1>
-<h2 class="title is-5">Amiibo Data</h2>
-<p>
-  The data for this project is concerning currently released “Amiibo” figurines. These are NFC figurines created by the gaming company Nintendo; each Amiibo is based on a Nintendo or 3rd party character. <br><br>
-  The data I used for this project is retrieved from the Amiibo API (<a href='https://amiiboapi.com/'>https://amiiboapi.com/</a>). The Amiibo API contains information regarding all currently released Amiibo figurines and is maintained by a developer named Nevin Nu.<br><br>
-  I pulled data from multiple different endpoints of the API, each concerning an Amiibo Series or Game Series. I tried to mostly avoid adding Amiibo’s from 3rd party franchises, and only pulled in Amiibo’s that are in figurine form (no Amiibo cards).<br><br>
-</p>
-<h2 class="title is-5">Data Structure</h2>
-<p>
-  The Entity Relationship Diagram (ERD) describes the structure of the Amiibo data stored within the application. There are four tables, Amiibos, AmiiboSeries, GameSeries, and Characters. The Amiibos table is the focal point of the structure;
-  each Amiibo is part of exactly one AmiiboSeries and GameSeries and is associated with exactly one character. A GameSeries, and Character can have zero to many Amiibos, while an AmiiboSeries can have one to many Amiibos associated with it.
-</p>
-<br>
-<p>Below is a visual representation of the ERD I created, complete with the attributes for each table:</p>
-<br>
-<%= image_tag 'DataProjectERD.png', alt: "Amiibo Data Project ERD"%>
+<div class="container mb-4">
+  <h1 class="title is-4">Data Project Description</h1>
+  <h2 class="title is-5">Amiibo Data</h2>
+  <p>
+    The data for this project is concerning currently released “Amiibo” figurines. These are NFC figurines created by the gaming company Nintendo; each Amiibo is based on a Nintendo or 3rd party character. <br><br>
+    The data I used for this project is retrieved from the Amiibo API (<a href='https://amiiboapi.com/'>https://amiiboapi.com/</a>). The Amiibo API contains information regarding all currently released Amiibo figurines and is maintained by a developer named Nevin Nu.<br><br>
+    I pulled data from multiple different endpoints of the API, each concerning an Amiibo Series or Game Series. I tried to mostly avoid adding Amiibo’s from 3rd party franchises, and only pulled in Amiibo’s that are in figurine form (no Amiibo cards).<br><br>
+  </p>
+  <h2 class="title is-5">Data Structure</h2>
+  <p>
+    The Entity Relationship Diagram (ERD) describes the structure of the Amiibo data stored within the application. There are four tables, Amiibos, AmiiboSeries, GameSeries, and Characters. The Amiibos table is the focal point of the structure;
+    each Amiibo is part of exactly one AmiiboSeries and GameSeries and is associated with exactly one character. A GameSeries, and Character can have zero to many Amiibos, while an AmiiboSeries can have one to many Amiibos associated with it.
+  </p>
+  <br>
+  <p>Below is a visual representation of the ERD I created, complete with the attributes for each table:</p>
+  <br>
+  <%= image_tag 'DataProjectERD.png', alt: "Amiibo Data Project ERD"%>
+</div>

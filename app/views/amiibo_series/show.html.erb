@@ -1,14 +1,16 @@
-<% content_for(:html_title) {@amiibo_series_show.name} %>
+<div class="container">
+  <% content_for(:html_title) {@amiibo_series_show.name} %>
 
-<h1 class="title is-4"><%= @amiibo_series_show.name %> - Amiibo Series</h1>
-<h2>Displaying <%= @amiibo_series_show.amiibos.count %> Amiibos:</h2>
+  <h1 class="title is-4"><%= @amiibo_series_show.name %> - Amiibo Series</h1>
+  <h2>Displaying <%= @amiibo_series_show.amiibos.count %> Amiibos:</h2>
 
-<br>
-<ul>
-  <% @amiibo_series_show.amiibos.order(:name).each do |amiibo| %>
-    <li><%= link_to amiibo.name, amiibo %></li>
-  <% end %>
-</ul>
+  <br>
+  <ul>
+    <% @amiibo_series_show.amiibos.order(:name).each do |amiibo| %>
+      <li><%= link_to amiibo.name, amiibo %></li>
+    <% end %>
+  </ul>
+</div>
 
 
 

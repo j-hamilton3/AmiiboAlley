@@ -1,9 +1,11 @@
-<h1 class="title is-4">Amiibo Series</h1>
+<div class="container">
+  <h1 class="title is-4">Amiibo Series</h1>
 
-<ul>
-  <% @amiibo_series.each do |i| %>
-  <li><%= link_to i.name, i %> (<%= i.amiibos.count %>)</li>
-  <li><%= i.description %></li>
-  <br>
-  <% end %>
-</ul>
+  <ul>
+    <% @amiibo_series.each do |i| %>
+    <li><%= link_to i.name, i %> (<%= i.amiibos.count %>)</li>
+    <li><%= i.description %></li>
+    <br>
+    <% end %>
+  </ul>
+</div>

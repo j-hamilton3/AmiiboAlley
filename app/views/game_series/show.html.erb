@@ -1,11 +1,13 @@
-<% content_for(:html_title) {@game_series_show.name} %>
+<div class="container">
+  <% content_for(:html_title) {@game_series_show.name} %>
 
-<h1 class="title is-4"><%= @game_series_show.name %> - Game Series</h1>
-<h2>Displaying <%= pluralize @game_series_show.amiibos.count, "Amiibo"%>:</h2>
-<br>
+  <h1 class="title is-4"><%= @game_series_show.name %> - Game Series</h1>
+  <h2>Displaying <%= pluralize @game_series_show.amiibos.count, "Amiibo"%>:</h2>
+  <br>
 
-<ul>
-  <% @game_series_show.amiibos.order(:name).each do |amiibo| %>
-    <li><%= link_to amiibo.name, amiibo %></li>
-  <% end %>
-</ul>
+  <ul>
+    <% @game_series_show.amiibos.order(:name).each do |amiibo| %>
+      <li><%= link_to amiibo.name, amiibo %></li>
+    <% end %>
+  </ul>
+</div>
