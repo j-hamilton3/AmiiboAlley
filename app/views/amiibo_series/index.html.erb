@@ -5,7 +5,7 @@
     <% @amiibo_series.each do |i| %>
     <li><%= link_to i.name, i %> (<%= i.amiibos.count %>)</li>
     <li><%= i.description %></li>
-    <br>
+    <li><br></li>
     <% end %>
   </ul>
 </div>

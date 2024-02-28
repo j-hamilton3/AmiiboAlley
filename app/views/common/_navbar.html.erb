@@ -7,11 +7,11 @@
 
   <div class="navbar-menu ml-5">
     <div class="navbar-start">
-      <li class="navbar-item"><%= link_to_unless_current "All Amiibos", root_path %></li>
-      <li class="navbar-item"><%= link_to_unless_current "Amiibo Series", amiibo_series_index_path %></li>
-      <li class="navbar-item"><%= link_to_unless_current "Game Series", game_series_index_path %></li>
-      <li class="navbar-item"><%= link_to_unless_current "Characters", characters_path %></li>
-      <li class="navbar-item"><%= link_to_unless_current "About", about_index_path %></li>
+      <p class="navbar-item"><%= link_to_unless_current "All Amiibos", root_path %></p>
+      <p class="navbar-item"><%= link_to_unless_current "Amiibo Series", amiibo_series_index_path %></p>
+      <p class="navbar-item"><%= link_to_unless_current "Game Series", game_series_index_path %></p>
+      <p class="navbar-item"><%= link_to_unless_current "Characters", characters_path %></p>
+      <p class="navbar-item"><%= link_to_unless_current "About", about_index_path %></p>
     </div>
     <%= form_with(url: search_amiibos_path, method: :get, local: true, class: "navbar-item mr-6") do %>
       <div class="field has-addons">
