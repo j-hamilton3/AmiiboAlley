@@ -20,3 +20,13 @@
   width: 500px;
   margin-right: 0px;
 }
+
+/* Ensure the navbar menu is always displayed */
+.navbar-menu {
+  display: flex !important;
+}
+
+/* Hide the navbar burger icon */
+.navbar-burger {
+  display: none !important;
+}

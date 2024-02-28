@@ -1,19 +1,31 @@
-<h1 class="title is-1">
-  <%= image_tag 'Amiibo-Left.PNG', alt: "Amiibo Logo Bracket"%>
-  Amiibo DB
-  <%= image_tag 'Amiibo-Right.PNG', alt: "Amiibo Logo Bracket"%>
-</h1>
-<nav>
-  <ul>
-    <li><%= link_to_unless_current "All Amiibos", root_path %></li>
-    <li><%= link_to_unless_current "Amiibo Series", amiibo_series_index_path %></li>
-    <li><%= link_to_unless_current "Game Series", game_series_index_path %></li>
-    <li><%= link_to_unless_current "Characters", characters_path %></li>
-    <li><%= link_to_unless_current "About", about_index_path %></li>
-  </ul>
-  <%= form_with(url: search_amiibos_path, method: :get, local: true) do %>
-    <%= text_field_tag(:keywords, nil, class: "input", placeholder: 'Search for Amiibos')%>
-    <%= select_tag :amiibo_series_id, options_for_select([['All Amiibos', '']] +  AmiiboSeries.order(:name).collect { |series| [series.name, series.id] }) %>
-    <%= submit_tag('Search', class: 'button is-primary')%>
-  <% end %>
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+      <%= image_tag 'Amiibo-Left.PNG', alt: "Amiibo Logo" %>
+      <h1 class="title is-2 mt-4">Amiibo DB</h1>
+      <%= image_tag 'Amiibo-Right.PNG', alt: "Amiibo Logo" %>
+  </div>
+
+  <div class="navbar-menu ml-5">
+    <div class="navbar-start">
+      <li class="navbar-item"><%= link_to_unless_current "All Amiibos", root_path %></li>
+      <li class="navbar-item"><%= link_to_unless_current "Amiibo Series", amiibo_series_index_path %></li>
+      <li class="navbar-item"><%= link_to_unless_current "Game Series", game_series_index_path %></li>
+      <li class="navbar-item"><%= link_to_unless_current "Characters", characters_path %></li>
+      <li class="navbar-item"><%= link_to_unless_current "About", about_index_path %></li>
+    </div>
+    <%= form_with(url: search_amiibos_path, method: :get, local: true, class: "navbar-item mr-6") do %>
+      <div class="field has-addons">
+        <div class="control">
+          <%= text_field_tag(:keywords, nil, class: "input", placeholder: 'Search for Amiibos') %>
+        </div>
+        <div class="control">
+            <%= select_tag :amiibo_series_id, options_for_select([['All Amiibos', '']] +  AmiiboSeries.order(:name).collect { |series| [series.name, series.id] }), {class: "select mt-1 ml-1 mr-1"} %>
+        </div>
+        <div class="control">
+          <%= submit_tag('Search', class: 'button is-primary') %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </nav>
+
