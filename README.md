@@ -1,24 +1,13 @@
-# README
+# AmiiboDB
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+AmiiboDB is a web application built in Ruby on Rails, focusing on the data concerning currently released "Amiibo" figurines. Amiibos are NFC-enabled figurines produced by Nintendo, each based on characters from Nintendo or third-party franchises.
 
-Things you may want to cover:
+## Data Source
 
-* Ruby version
+The data for this project is sourced from the [Amiibo API](https://amiiboapi.com/), which contains information on all currently released Amiibo figurines. The API is maintained by a developer named Nevin Nu.
 
-* System dependencies
+## Project Details
 
-* Configuration
+The application retrieves data from multiple endpoints of the Amiibo API, each relating to an Amiibo Series or Game Series. The project primarily focuses on Amiibos in figurine form, excluding Amiibo cards to maintain a specific scope.
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The main goal of AmiiboDB is to provide an easily navigable platform for enthusiasts and collectors to explore and discover Amiibos, with detailed information including the character name, the series it belongs to, the game series it's associated with, and its release date.
