@@ -1,6 +1,6 @@
 # AmiiboAlley
 
-AmiiboDB is an e-commerce web application built in Ruby on Rails, focusing on the data concerning currently released "Amiibo" figurines. Amiibos are NFC-enabled figurines produced by Nintendo, each based on characters from Nintendo or third-party franchises.
+AmiiboAlley is an e-commerce web application built in Ruby on Rails, focusing on the data concerning currently released "Amiibo" figurines. Amiibos are NFC-enabled figurines produced by Nintendo, each based on characters from Nintendo or third-party franchises.
 
 ## Data Source
 
