@@ -8,11 +8,36 @@
   </p>
   <h2 class="title is-5">Data Structure</h2>
   <p>
-    The Entity Relationship Diagram (ERD) describes the structure of the Amiibo data stored within the application. There are four tables, Amiibos, AmiiboSeries, GameSeries, and Characters. The Amiibos table is the focal point of the structure;
-    each Amiibo is part of exactly one AmiiboSeries and GameSeries and is associated with exactly one character. A GameSeries, and Character can have zero to many Amiibos, while an AmiiboSeries can have one to many Amiibos associated with it.
+   The following Entity Relationship Diagram (ERD) describes the structure of the data stored within the application.
+   The first four tables, Amiibos, AmiiboSeries, GameSeries and Characters store data related to the Amiibo products and their related series.
+   The next four tables, Customers, Provinces, Orders, and OrderAmiibos, store information regarding Amiibo Alley customers and the orders they place.
+  </p>
+  <br>
+  <h3 class="has-text-weight-semibold">Amiibo Data</h3>
+  <br>
+  <p>
+     The Amiibos table is the focal point of the structure; each Amiibo is part of exactly one AmiiboSeries and GameSeries and is associated with exactly one character.
+     A GameSeries, and Character can have zero to many Amiibos, while an AmiiboSeries can have one to many Amiibos associated with it.
+     Each Amiibo has an associated name, release date and price.
+  </p>
+  <br>
+  <h3 class="has-text-weight-semibold">Customer/Order Data</h3>
+  <br>
+  <p>
+    The Customers table stores data regarding Amiibo Alley customers; details like full name, city, postal code, province, and username and password for login purposes are stored.
+    This table is associated with a Provinces table by foreign key, that contains all province names in Canada.
+    The Orders table stores information regarding orders placed by Customers.
+    To resolve the many to many relationships between the Orders and Amiibos tables, the OrderAmiibos table was created.
+    This table stores information including quantity of Amiibos ordered, and the unit price at the time (to solve the time anomaly).
+    This ensures that customers can place orders of multiple different Amiibos and order a specific quantity of products.
   </p>
   <br>
   <p>Below is a visual representation of the ERD I created, complete with the attributes for each table:</p>
   <br>
-  <%= image_tag 'DataProjectERD.png', alt: "Amiibo Data Project ERD"%>
+  <br>
+  <div class="level">
+    <div class="level-item has-text-centered">
+      <%= image_tag 'AmiiboAlleyERD.png', alt: "AmiiboAlley Project ERD"%>
+    </div>
+  </div>
 </div>
