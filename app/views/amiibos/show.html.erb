@@ -14,6 +14,7 @@
             <li>Amiibo Series: <%= link_to @amiibo.amiibo_series.name, @amiibo.amiibo_series %></li>
             <li>Game Series: <%= link_to @amiibo.game_series.name, @amiibo.game_series %></li>
             <li>Release Date (NA): <%= @amiibo.release_date&.strftime("%B %d, %Y") %></li>
+            <li>Price: $<%= number_with_precision(@amiibo.price, precision: 2) %></li>
           </ul>
         </div>
       </div>

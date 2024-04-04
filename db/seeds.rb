@@ -26,12 +26,14 @@ file_paths.each do |path|
     amiibo_series = AmiiboSeries.find_or_create_by(name: row["amiibo/amiiboSeries"])
     game_series = GameSeries.find_or_create_by(name: row["amiibo/gameSeries"])
     character = Character.find_or_create_by(name: row["amiibo/character"])
+    price = Faker::Number.between(from: 10.00, to: 40.00)
     amiibo = Amiibo.create(name: row["amiibo/name"],
                            release_date: row["amiibo/release/na"],
                            image: row["amiibo/image"],
                            amiibo_series_id: amiibo_series.id,
                            game_series_id: game_series.id,
-                           character_id: character.id)
+                           character_id: character.id,
+                           price: price)
   end
 end
 

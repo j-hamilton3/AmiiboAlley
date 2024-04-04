@@ -29,6 +29,9 @@ gem "jbuilder"
 # Kaminari - to add pagination to web application.
 gem 'kaminari'
 
+# Faker - to create fake amiibo prices.
+gem 'faker'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
