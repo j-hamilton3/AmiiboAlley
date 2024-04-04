@@ -3,11 +3,26 @@
 
   <h1 class="title is-4"><%= @game_series_show.name %> - Game Series</h1>
   <h2>Displaying <%= pluralize @game_series_show.amiibos.count, "Amiibo"%>:</h2>
+
+  <br>
+  <div class="ml-3">
+    <%= paginate @amiibos %>
+  </div>
   <br>
 
-  <ul>
-    <% @game_series_show.amiibos.order(:name).each do |amiibo| %>
-      <li><%= link_to amiibo.name, amiibo %></li>
+    <ul class="columns is-centered is-multiline">
+    <% @amiibos.each do |amiibo| %>
+      <li class="column is-one-quarter">
+        <%= link_to amiibo do %>
+          <div class="amiibo-card has-text-centered">
+            <div class="amiibo-image-container">
+              <img src="<%= amiibo.image %>" alt="<%= amiibo.name %> Amiibo." class="amiibo-image">
+            </div>
+            <p><%= amiibo.name %></p>
+            <p>$<%= number_with_precision(amiibo.price, precision: 2) %></p>
+          </div>
+        <% end %>
+      </li>
     <% end %>
   </ul>
 </div>

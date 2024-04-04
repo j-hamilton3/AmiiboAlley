@@ -30,3 +30,28 @@
 .navbar-burger {
   display: none !important;
 }
+
+.amiibo-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  height: 300px;
+  width: 100%;
+  padding: 10px;
+}
+
+.amiibo-image-container {
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.amiibo-image {
+  max-width: 180px;
+  max-height: 100%;
+  object-fit: contain;
+}

@@ -10,9 +10,19 @@
 
   <br>
 
-  <ul>
-    <% @amiibos.each do |i| %>
-    <li><%= link_to i.name, i %></li>
-    <% end %>
+  <ul class="columns is-centered is-multiline">
+  <% @amiibos.each do |amiibo| %>
+    <li class="column is-one-quarter">
+      <%= link_to amiibo do %>
+        <div class="amiibo-card has-text-centered">
+          <div class="amiibo-image-container">
+            <img src="<%= amiibo.image %>" alt="<%= amiibo.name %> Amiibo." class="amiibo-image">
+          </div>
+          <p><%= amiibo.name %></p>
+          <p>$<%= number_with_precision(amiibo.price, precision: 2) %></p>
+        </div>
+      <% end %>
+    </li>
+  <% end %>
   </ul>
 </div>

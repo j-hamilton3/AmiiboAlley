@@ -5,5 +5,6 @@ class AmiiboSeriesController < ApplicationController
 
   def show
     @amiibo_series_show = AmiiboSeries.find(params[:id])
+    @amiibos = @amiibo_series_show.amiibos.order(:name).page(params[:page]).per(8)
   end
 end

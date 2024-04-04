@@ -5,9 +5,24 @@
   <h2>Displaying <%= pluralize @character.amiibos.count, "Amiibo"%>:</h2>
   <br>
 
-  <ul>
-    <% @character.amiibos.order(:name).each do |amiibo| %>
-      <li><%= link_to amiibo.name, amiibo %></li>
+  <div class="ml-3">
+    <%= paginate @amiibos %>
+  </div>
+  <br>
+
+  <ul class="columns is-centered is-multiline">
+    <% @amiibos.each do |amiibo| %>
+      <li class="column is-one-quarter">
+        <%= link_to amiibo do %>
+          <div class="amiibo-card has-text-centered">
+            <div class="amiibo-image-container">
+              <img src="<%= amiibo.image %>" alt="<%= amiibo.name %> Amiibo." class="amiibo-image">
+            </div>
+            <p><%= amiibo.name %></p>
+            <p>$<%= number_with_precision(amiibo.price, precision: 2) %></p>
+          </div>
+        <% end %>
+      </li>
     <% end %>
   </ul>
 </div>

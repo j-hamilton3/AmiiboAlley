@@ -1,6 +1,6 @@
 class AmiibosController < ApplicationController
   def index
-    @amiibos = Amiibo.order(:name).page(params[:page])
+    @amiibos = Amiibo.order(:name).page(params[:page]).per(8)
   end
 
   def show
@@ -15,11 +15,11 @@ class AmiibosController < ApplicationController
                         .where("amiibo_series.id = ? AND amiibos.name LIKE ?",
                                 params[:amiibo_series_id], wildcard_search)
                                 .page(params[:page])
-                                .per(22)
+                                .per(8)
       @category = AmiiboSeries.find(params[:amiibo_series_id]).name
     else
       # Search across all Amiibos
-      @amiibos = Amiibo.where("name LIKE ?", wildcard_search).page(params[:page]).per(22)
+      @amiibos = Amiibo.where("name LIKE ?", wildcard_search).page(params[:page]).per(8)
       @category = "All Amiibos"
     end
   end
