@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_04_203946) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_10_204217) do
   create_table "amiibo_series", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -39,13 +39,53 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_04_203946) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "customers", force: :cascade do |t|
+    t.string "fullName"
+    t.string "username"
+    t.string "password"
+    t.string "city"
+    t.string "postalCode"
+    t.integer "provinceId"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "game_series", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "order_amiibos", force: :cascade do |t|
+    t.integer "quantity"
+    t.decimal "unitPrice"
+    t.integer "orderId"
+    t.integer "amiiboId"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.datetime "orderDate"
+    t.integer "customerId"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "provinces", force: :cascade do |t|
+    t.string "provinceName"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "amiibos", "amiibo_series"
   add_foreign_key "amiibos", "amiibo_series"
   add_foreign_key "amiibos", "characters"
+  add_foreign_key "amiibos", "characters"
   add_foreign_key "amiibos", "game_series"
+  add_foreign_key "amiibos", "game_series"
+  add_foreign_key "customers", "provinces", column: "provinceId"
+  add_foreign_key "order_amiibos", "amiibos", column: "amiiboId"
+  add_foreign_key "order_amiibos", "orders", column: "orderId"
+  add_foreign_key "orders", "customers", column: "customerId"
 end
