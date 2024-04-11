@@ -43,3 +43,4 @@ puts "*** #{Amiibo.count} Amiibos."
 puts "*** #{AmiiboSeries.count} Amiibo Series."
 puts "*** #{GameSeries.count} Game Series."
 puts "*** #{Character.count} Characters."
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

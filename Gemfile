@@ -32,6 +32,15 @@ gem 'kaminari'
 # Faker - to create fake amiibo prices.
 gem 'faker'
 
+gem 'activeadmin'
+
+# Plus integrations with:
+gem 'devise'
+gem 'cancancan'
+gem 'draper'
+gem 'pundit'
+gem "sassc"
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
