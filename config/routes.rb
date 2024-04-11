@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
 
+  ActiveAdmin.routes(self)
   root to: "amiibos#index"
 
   resources :about, only: :index
@@ -8,6 +10,7 @@ Rails.application.routes.draw do
       get "search"
     end
   end
+
 
   resources :amiibo_series, only: [:index, :show]
   resources :game_series, only: [:index, :show]
