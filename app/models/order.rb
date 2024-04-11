@@ -3,4 +3,5 @@ class Order < ApplicationRecord
   has_many :order_amiibos
 
   validates :orderDate, presence: true
+  validates :customerId, presence: true, numericality: true
 end
