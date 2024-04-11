@@ -5,6 +5,7 @@ Amiibo.delete_all
 AmiiboSeries.delete_all
 Character.delete_all
 GameSeries.delete_all
+AdminUser.destroy_all
 
 # List of filenames
 file_paths = [
