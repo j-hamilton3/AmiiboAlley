@@ -28,4 +28,7 @@
     <% end %>
   </div>
 </nav>
+<% if flash[:notice]%>
+  <p class="add-to-cart-flash"><%= flash[:notice] %></p>
+<% end %>
 
