@@ -16,6 +16,11 @@
             <li>Release Date (NA): <%= @amiibo.release_date&.strftime("%B %d, %Y") %></li>
             <li>Price: $<%= number_with_precision(@amiibo.price, precision: 2) %></li>
           </ul>
+          <div class="add-to-cart">
+            <%= form_with url: cart_index_path, method: :post do %>
+              <%= button_tag 'Add To Cart 🛒'%>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
