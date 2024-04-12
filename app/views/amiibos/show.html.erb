@@ -18,6 +18,7 @@
           </ul>
           <div class="add-to-cart">
             <%= form_with url: cart_index_path, method: :post do %>
+              <%= hidden_field_tag(:id, @amiibo.id) %>
               <%= button_tag 'Add To Cart 🛒'%>
             <% end %>
           </div>
