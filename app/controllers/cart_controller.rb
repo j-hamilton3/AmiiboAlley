@@ -9,6 +9,10 @@ class CartController < ApplicationController
   end
 
   def destroy
-
+    id = params[:id].to_i
+    session[:shopping_cart].delete(id)
+    amiibo = Amiibo.find(id)
+    flash[:notice] = "#{amiibo.name} was removed from the cart. ❌"
+    redirect_to root_path
   end
 end

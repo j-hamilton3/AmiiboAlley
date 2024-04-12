@@ -17,9 +17,15 @@
             <li>Price: $<%= number_with_precision(@amiibo.price, precision: 2) %></li>
           </ul>
           <div class="add-to-cart">
-            <%= form_with url: cart_index_path, method: :post do %>
-              <%= hidden_field_tag(:id, @amiibo.id) %>
-              <%= button_tag 'Add To Cart 🛒'%>
+            <% if cart.include?(@amiibo)%>
+              <%= button_to cart_path(@amiibo), method: :delete do %>
+                Remove From Cart ❌
+              <% end %>
+            <% else %>
+              <%= form_with url: cart_index_path, method: :post do %>
+                <%= hidden_field_tag(:id, @amiibo.id) %>
+                <%= button_tag 'Add To Cart 🛒'%>
+                <% end %>
             <% end %>
           </div>
         </div>
