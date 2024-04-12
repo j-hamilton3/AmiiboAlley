@@ -28,6 +28,28 @@
     <% end %>
   </div>
 </nav>
+
+
+<details>
+  <summary>
+    <%= "🛒" %>
+    <% if cart.present? %>
+      <sup><%= cart.size %></sup>
+    <% end %>
+  </summary>
+    <% if cart.present? %>
+    <ul>
+    <% cart.each do |amiibo|%>
+      <li> <%= amiibo.name %>  $<%= amiibo.price %> <%= link_to '❌', cart_path(amiibo), method: :delete%> </li>
+    <% end %>
+    </ul>
+    <% else%>
+      <p>No items in your cart.</p>
+  <% end %>
+
+</details>
+
+
 <% if flash[:notice]%>
   <p class="add-to-cart-flash"><%= flash[:notice] %></p>
 <% end %>
