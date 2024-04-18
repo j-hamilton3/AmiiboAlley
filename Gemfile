@@ -41,6 +41,9 @@ gem 'draper'
 gem 'pundit'
 gem "sassc"
 
+# Stripe.
+gem 'stripe'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 

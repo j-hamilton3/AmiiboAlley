@@ -44,9 +44,12 @@
             <li class="cart-item">
               <div class="amiibo-details-container">
                 <span class="amiibo-details">
-                  <%= amiibo.name %>  $<%= amiibo.price %>
+                  <%= amiibo.name %>
+                 $<%= amiibo.price %>
+                  <input type="number" class="quantity-input" name="quantity" value="<%= 1 %>" min="1">
                 </span>
               </div>
+
               <div class="delete-button-container">
                 <%= button_to '❌', cart_path(amiibo), method: :delete, class: 'delete-button button is-danger is-small' %>
               </div>

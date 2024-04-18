@@ -84,3 +84,7 @@
 .delete-button {
   margin-left: 10px;
 }
+
+.quantity-input {
+  width: 25px;
+}
