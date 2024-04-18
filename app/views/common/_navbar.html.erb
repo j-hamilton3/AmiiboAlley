@@ -1,3 +1,14 @@
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  document.querySelectorAll('.quantity-input').forEach(input => {
+    input.addEventListener('change', function() {
+      let amiiboId = this.name.split('_')[1]; // Assuming name is "quantity_1"
+      document.getElementById(`quantity_input_${amiiboId}`).value = this.value;
+    });
+  });
+});
+</script>
+
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
       <%= image_tag 'Amiibo-Left.PNG', alt: "Amiibo Logo" %>
@@ -29,6 +40,7 @@
   </div>
 </nav>
 
+
 <details class="add-to-cart">
   <summary>
     <%= "🛒" %>
@@ -46,7 +58,7 @@
                 <span class="amiibo-details">
                   <%= amiibo.name %>
                  $<%= amiibo.price %>
-                  <input type="number" class="quantity-input" name="quantity" value="<%= 1 %>" min="1">
+                  <input type="number" class="quantity-input" name="quantity_<%= amiibo.id %>" value="1" min="1">
                 </span>
               </div>
 
@@ -57,8 +69,10 @@
           <% end %>
         </ul>
         <%= form_with url: checkout_create_path, remote: true do %>
-          <%= hidden_field_tag(:shopping_cart, session[:shopping_cart])%>
-          <%= button_tag "Buy Now "%>
+          <% cart.each do |amiibo| %>
+            <%= hidden_field_tag("quantities[#{amiibo.id}]", 1, id: "quantity_input_#{amiibo.id}") %>
+          <% end %>
+          <%= button_tag "Buy Now" %>
         <% end %>
       <% else %>
         <p class="empty-cart-message">No items in your cart.</p>
@@ -71,4 +85,7 @@
 <% if flash[:notice]%>
   <p class="add-to-cart-flash"><%= flash[:notice] %></p>
 <% end %>
+
+
+
 
