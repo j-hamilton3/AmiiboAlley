@@ -68,3 +68,19 @@
   border-radius: 5px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
 }
+
+.cart-item {
+  display: flex;
+  justify-content: space-between; /* Add space between amiibo details and delete button */
+  align-items: center;
+  margin-bottom: 5px;
+  width: 100%; /* Ensure the cart item spans the entire width */
+}
+
+.amiibo-details {
+  margin-right: 10px;
+}
+
+.delete-button {
+  margin-left: 10px;
+}

@@ -29,24 +29,35 @@
   </div>
 </nav>
 
-
-<details>
+<details class="add-to-cart">
   <summary>
     <%= "🛒" %>
     <% if cart.present? %>
       <sup><%= cart.size %></sup>
     <% end %>
   </summary>
-    <% if cart.present? %>
-    <ul>
-    <% cart.each do |amiibo|%>
-      <li> <%= amiibo.name %>  $<%= amiibo.price %> <%= link_to '❌', cart_path(amiibo), method: :delete%> </li>
-    <% end %>
-    </ul>
-    <% else%>
-      <p>No items in your cart.</p>
-  <% end %>
-
+  <div class="columns is-centered">
+    <div class="column is-half">
+      <% if cart.present? %>
+        <ul class="cart-items">
+          <% cart.each do |amiibo| %>
+            <li class="cart-item">
+              <div class="amiibo-details-container">
+                <span class="amiibo-details">
+                  <%= amiibo.name %>  $<%= amiibo.price %>
+                </span>
+              </div>
+              <div class="delete-button-container">
+                <%= button_to '❌', cart_path(amiibo), method: :delete, class: 'delete-button button is-danger is-small' %>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p class="empty-cart-message">No items in your cart.</p>
+      <% end %>
+    </div>
+  </div>
 </details>
 
 
