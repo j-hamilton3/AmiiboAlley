@@ -21,8 +21,8 @@ Rails.application.routes.draw do
   #checkout
   scope "/checkout" do
     post "create", to: "checkout#create", as: "checkout_create"
-    post "success", to: "checkout#success", as: "checkout_success"
-    post "cancel", to: "checkout#cancel", as: "checkout_cancel"
+    get "success", to: "checkout#success", as: "checkout_success"
+    get "cancel", to: "checkout#cancel", as: "checkout_cancel"
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
