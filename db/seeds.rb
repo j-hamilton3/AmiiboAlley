@@ -6,6 +6,7 @@ AmiiboSeries.delete_all
 Character.delete_all
 GameSeries.delete_all
 AdminUser.destroy_all
+Province.destroy_all
 
 # List of filenames
 file_paths = [
@@ -44,8 +45,27 @@ puts "*** #{Amiibo.count} Amiibos."
 puts "*** #{AmiiboSeries.count} Amiibo Series."
 puts "*** #{GameSeries.count} Game Series."
 puts "*** #{Character.count} Characters."
+
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
 
-["AB", "BC", "MB", "NB", "NL", "NS", "NT", "NU", "ON", "PE", "QC", "SK", "YT"].each do |abbr|
-  Province.create(provinceName: abbr)
+provinces_data = [
+  ["AB", 0.05],
+  ["BC", 0.12],
+  ["MB", 0.12],
+  ["NB", 0.15],
+  ["NL", 0.15],
+  ["NS", 0.15],
+  ["NT", 0.05],
+  ["NU", 0.05],
+  ["ON", 0.13],
+  ["PE", 0.15],
+  ["QC", 0.14975],
+  ["SK", 0.11],
+  ["YT", 0.05]
+]
+
+provinces_data.each do |abbr, rate|
+  Province.find_or_create_by(provinceName: abbr) do |province|
+    province.taxRate = rate
+  end
 end
