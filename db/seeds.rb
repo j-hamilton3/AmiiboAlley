@@ -45,3 +45,7 @@ puts "*** #{AmiiboSeries.count} Amiibo Series."
 puts "*** #{GameSeries.count} Game Series."
 puts "*** #{Character.count} Characters."
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+
+["AB", "BC", "MB", "NB", "NL", "NS", "NT", "NU", "ON", "PE", "QC", "SK", "YT"].each do |abbr|
+  Province.create(provinceName: abbr)
+end
