@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function() {
           <li class="nav-item"> <%= link_to "Sign Up", new_user_registration_path, class: "nav-link"  %></li>
           <li class="nav-item"> <%= link_to "Sign In", new_user_session_path, class: "nav-link"  %></li>
         <% end %>
-      </ul>
+</ul>
 
 <details class="add-to-cart">
   <summary>
@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function() {
               <div class="amiibo-details-container">
                 <span class="amiibo-details">
                   <%= amiibo.name %>
-                 $<%= amiibo.price %>
+                  $<%= amiibo.price %>
                   <input type="number" class="quantity-input" name="quantity_<%= amiibo.id %>" value="1" min="1">
                 </span>
               </div>
@@ -81,7 +81,11 @@ document.addEventListener("DOMContentLoaded", function() {
           <% cart.each do |amiibo| %>
             <%= hidden_field_tag("quantities[#{amiibo.id}]", 1, id: "quantity_input_#{amiibo.id}") %>
           <% end %>
-          <%= button_tag "Buy Now" %>
+          <% if user_signed_in? %>
+            <%= button_tag "Buy Now", class: "button is-primary" %>
+          <% else %>
+            <p class="notification is-warning">Please <%= link_to 'sign in', new_user_session_path %> to purchase.</p>
+          <% end %>
         <% end %>
       <% else %>
         <p class="empty-cart-message">No items in your cart.</p>
