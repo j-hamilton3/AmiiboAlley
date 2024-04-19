@@ -27,6 +27,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_field :address %>
+  </div>
+
+  <div class="field">
   <%= f.label :province_id, "Province" %><br />
   <%= f.collection_select :provinceId, Province.all, :id, :provinceName, include_blank: false %>
   </div>

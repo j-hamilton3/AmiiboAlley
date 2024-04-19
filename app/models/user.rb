@@ -8,4 +8,5 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :postalCode, presence: true
+  validates :address, presence: true
 end
