@@ -12,4 +12,13 @@ class ApplicationController < ActionController::Base
     Amiibo.find(session[:shopping_cart])
   end
 
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :provinceId, :postalCode])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :provinceId, :postalCode])
+  end
+
 end
