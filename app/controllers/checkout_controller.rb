@@ -120,7 +120,7 @@ class CheckoutController < ApplicationController
       payment_method_types: ['card'],
       customer_email: current_user.email,
       billing_address_collection: 'required',
-      success_url: checkout_success_url + "?session_id={CHECKOUT_SESSION_ID}",
+      success_url: checkout_success_url + "?session_id={CHECKOUT_SESSION_ID}&order_id=#{order.id}",
       cancel_url: checkout_cancel_url,
       mode: 'payment',
       line_items: line_items
@@ -135,11 +135,17 @@ class CheckoutController < ApplicationController
     @payment_intent = Stripe::PaymentIntent.retrieve(@session.payment_intent)
 
     # Change the Order object in Database to status:paid, and then add stripe_id.
+    order_id = params[:order_id]
+
+    order = Order.find(order_id)
+
+    order.status = "paid"
+    order.stripe_id = @payment_intent.id
+
+    order.save
   end
 
   def cancel
-    # Handle cancellation of transaction
-
-    # Change the Order object in Database to status:cancelled.
+    # Handle cancelled transactions.
   end
 end

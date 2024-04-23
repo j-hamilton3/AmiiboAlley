@@ -11,8 +11,7 @@ class Order < ApplicationRecord
   enum status: {
     new_status: 'new',
     paid: 'paid',
-    shipped: 'shipped',
-    cancelled: 'cancelled'
+    shipped: 'shipped'
   }
 
   def self.ransackable_associations(auth_object = nil)
