@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_23_155832) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_23_164145) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -74,10 +74,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_23_155832) do
   create_table "order_amiibos", force: :cascade do |t|
     t.integer "quantity"
     t.decimal "unitPrice"
-    t.integer "orderId"
-    t.integer "amiiboId"
+    t.integer "order_id"
+    t.integer "amiibo_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "tax_rate"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -117,7 +118,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_23_155832) do
   add_foreign_key "amiibos", "characters"
   add_foreign_key "amiibos", "game_series"
   add_foreign_key "amiibos", "game_series"
-  add_foreign_key "order_amiibos", "amiibos", column: "amiiboId"
-  add_foreign_key "order_amiibos", "orders", column: "orderId"
+  add_foreign_key "order_amiibos", "amiibos"
+  add_foreign_key "order_amiibos", "orders"
   add_foreign_key "orders", "users"
 end
