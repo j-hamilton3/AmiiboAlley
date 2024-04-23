@@ -26,9 +26,6 @@ class CheckoutController < ApplicationController
     @total = @subtotal + @totalTaxes
   end
 
-
-
-
   def create
     if params[:quantities].blank?
       redirect_to root_path
@@ -41,12 +38,59 @@ class CheckoutController < ApplicationController
     current_user_tax_rate = Province.find(current_user.provinceId).taxRate
 
     total_taxes = 0.0
+    subtotal = 0
 
-    line_items = quantities.map do |amiibo_id, quantity|
+    # Loop through to get totals.
+    quantities.map do |amiibo_id, quantity|
       amiibo = Amiibo.find(amiibo_id)
+
       tax_for_item = ((amiibo.price * 100) * current_user_tax_rate)
 
       total_taxes += tax_for_item * quantity.to_i
+
+      subtotal += amiibo.price * quantity.to_i
+    end
+
+    total_taxes = total_taxes.round
+
+    # Save data to the database (Orders.)
+    order_date = Time.now
+    order_user_id = current_user.id
+    order_status = "new"
+    order_total = subtotal + (subtotal * current_user_tax_rate)
+
+    order_params = {
+      orderDate: order_date,
+      user_id: order_user_id,
+      status: order_status,
+      total: order_total
+    }
+
+    order = Order.new(order_params)
+
+    order.save
+
+    line_items = quantities.map do |amiibo_id, quantity|
+      amiibo = Amiibo.find(amiibo_id)
+
+      # Save each item to order_amiibos.
+      order_amiibos_quantity = quantity.to_i
+      order_amiibos_unitPrice = amiibo.price
+      order_amiibos_order_id = order.id
+      order_amiibos_amiibo_id = amiibo.id
+      order_amiibos_tax_rate = current_user_tax_rate
+
+      order_amiibos_params = {
+      quantity: order_amiibos_quantity,
+      unitPrice: order_amiibos_unitPrice,
+      order_id: order_amiibos_order_id  ,
+      amiibo_id: order_amiibos_amiibo_id,
+      tax_rate: order_amiibos_tax_rate
+      }
+
+      order_amiibo = OrderAmiibo.new(order_amiibos_params)
+      order_amiibo.save
+
       {
         quantity: quantity.to_i,
         price_data: {
@@ -59,8 +103,6 @@ class CheckoutController < ApplicationController
         }
       }
     end
-
-    total_taxes = total_taxes.round
 
     line_items << {
     quantity: 1,
@@ -91,9 +133,13 @@ class CheckoutController < ApplicationController
     # Retrieve session information from Stripe after successful payment
     @session = Stripe::Checkout::Session.retrieve(params[:session_id])
     @payment_intent = Stripe::PaymentIntent.retrieve(@session.payment_intent)
+
+    # Change the Order object in Database to status:paid, and then add stripe_id.
   end
 
   def cancel
     # Handle cancellation of transaction
+
+    # Change the Order object in Database to status:cancelled.
   end
 end
