@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_19_030132) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_23_155832) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -65,17 +65,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_19_030132) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "customers", force: :cascade do |t|
-    t.string "fullName"
-    t.string "username"
-    t.string "password"
-    t.string "city"
-    t.string "postalCode"
-    t.integer "provinceId"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "game_series", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -93,9 +82,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_19_030132) do
 
   create_table "orders", force: :cascade do |t|
     t.datetime "orderDate"
-    t.integer "customerId"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "provinces", force: :cascade do |t|
@@ -127,8 +117,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_19_030132) do
   add_foreign_key "amiibos", "characters"
   add_foreign_key "amiibos", "game_series"
   add_foreign_key "amiibos", "game_series"
-  add_foreign_key "customers", "provinces", column: "provinceId"
   add_foreign_key "order_amiibos", "amiibos", column: "amiiboId"
   add_foreign_key "order_amiibos", "orders", column: "orderId"
-  add_foreign_key "orders", "customers", column: "customerId"
+  add_foreign_key "orders", "users"
 end

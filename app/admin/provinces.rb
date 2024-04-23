@@ -5,7 +5,7 @@ ActiveAdmin.register Province do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :provinceName, :taxRate
+  permit_params :provinceName, :taxRate
   #
   # or
   #
