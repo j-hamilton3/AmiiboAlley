@@ -23,7 +23,7 @@ class CheckoutController < ApplicationController
 
     @totalTaxes = (@subtotal * @userProvince.taxRate).round(2)
 
-    @total =@subtotal + @totalTaxes
+    @total = @subtotal + @totalTaxes
   end
 
 
@@ -40,7 +40,7 @@ class CheckoutController < ApplicationController
 
     current_user_tax_rate = Province.find(current_user.provinceId).taxRate
 
-    total_taxes = 0
+    total_taxes = 0.0
 
     line_items = quantities.map do |amiibo_id, quantity|
       amiibo = Amiibo.find(amiibo_id)
@@ -60,10 +60,12 @@ class CheckoutController < ApplicationController
       }
     end
 
+    total_taxes = total_taxes.round
+
     line_items << {
     quantity: 1,
     price_data: {
-      unit_amount: (total_taxes).to_i,
+      unit_amount: total_taxes,
       currency: 'cad',
       product_data: {
         name: "Total Taxes",
@@ -74,6 +76,8 @@ class CheckoutController < ApplicationController
 
     @session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
+      customer_email: current_user.email,
+      billing_address_collection: 'required',
       success_url: checkout_success_url + "?session_id={CHECKOUT_SESSION_ID}",
       cancel_url: checkout_cancel_url,
       mode: 'payment',
