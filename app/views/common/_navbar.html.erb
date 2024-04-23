@@ -77,12 +77,12 @@ document.addEventListener("DOMContentLoaded", function() {
             </li>
           <% end %>
         </ul>
-        <%= form_with url: checkout_create_path, remote: true do %>
+        <%= form_with url: checkout_review_path, local: true do %>
           <% cart.each do |amiibo| %>
             <%= hidden_field_tag("quantities[#{amiibo.id}]", 1, id: "quantity_input_#{amiibo.id}") %>
           <% end %>
           <% if user_signed_in? %>
-            <%= button_tag "Buy Now", class: "button is-primary" %>
+            <%= button_tag "Review Order", class: "button is-primary" %>
           <% else %>
             <p class="notification is-warning">Please <%= link_to 'sign in', new_user_session_path %> to purchase.</p>
           <% end %>
