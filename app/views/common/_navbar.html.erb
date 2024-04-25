@@ -7,48 +7,74 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  // Get all "navbar-burger" elements
+  const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+  // Add a click event on each of them
+  $navbarBurgers.forEach( el => {
+    el.addEventListener('click', () => {
+
+      // Get the target from the "data-target" attribute
+      const target = el.dataset.target;
+      const $target = document.getElementById(target);
+
+      // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+      el.classList.toggle('is-active');
+      $target.classList.toggle('is-active');
+
+    });
+  });
+
+});
 </script>
 
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-      <%= image_tag 'Amiibo-Left.PNG', alt: "Amiibo Logo" %>
-      <h1 class="title is-2 mt-4">Amiibo Alley</h1>
-      <%= image_tag 'Amiibo-Right.PNG', alt: "Amiibo Logo" %>
+    <%= image_tag 'AmiiboAlleyLogo.PNG', alt: "Amiibo Logo" %>
+
+      <a class="navbar-burger" role="button" aria-label="menu" aria-expanded="false" data-target="amiibo-nav">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
   </div>
 
-  <div class="navbar-menu ml-5">
-    <div class="navbar-start">
+  <div id="amiibo-nav" class="navbar-menu">
+    <div class="navbar-end">
       <p class="navbar-item"><%= link_to_unless_current "All Amiibos", root_path %></p>
       <p class="navbar-item"><%= link_to_unless_current "Amiibo Series", amiibo_series_index_path %></p>
       <p class="navbar-item"><%= link_to_unless_current "Game Series", game_series_index_path %></p>
       <p class="navbar-item"><%= link_to_unless_current "Characters", characters_path %></p>
       <p class="navbar-item"><%= link_to_unless_current "About", about_index_path %></p>
+       <% if current_user %>
+          <p class="navbar-item"> <%= link_to_unless_current "Edit Account", edit_user_registration_path, class: "nav-link" %></li>
+          <p class="navbar-item"> <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "nav-link button mt-5" %></p>
+        <% else %>
+          <p class="navbar-item"> <%= link_to_unless_current "Sign Up", new_user_registration_path, class: "nav-link"  %></li>
+          <p class="navbar-item"> <%= link_to_unless_current "Sign In", new_user_session_path, class: "nav-link button"  %></li>
+        <% end %>
     </div>
-    <%= form_with(url: search_amiibos_path, method: :get, local: true, class: "navbar-item mr-6") do %>
-      <div class="field has-addons">
-        <div class="control">
-          <%= text_field_tag(:keywords, nil, class: "input", placeholder: 'Search for Amiibos') %>
-        </div>
-        <div class="control">
-            <%= select_tag :amiibo_series_id, options_for_select([['All Amiibos', '']] +  AmiiboSeries.order(:name).collect { |series| [series.name, series.id] }), {class: "select mt-1 ml-1 mr-1"} %>
-        </div>
-        <div class="control">
-          <%= submit_tag('Search', class: 'button is-primary') %>
-        </div>
-      </div>
-    <% end %>
   </div>
 </nav>
 
-<ul class="navbar-nav">
-        <% if current_user %>
-          <li class="nav-item"> <%= link_to "Edit Account", edit_user_registration_path, class: "nav-link" %></li>
-          <li class="nav-item"> <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-small btn-primary mx-2" %></li>
-        <% else %>
-          <li class="nav-item"> <%= link_to "Sign Up", new_user_registration_path, class: "nav-link"  %></li>
-          <li class="nav-item"> <%= link_to "Sign In", new_user_session_path, class: "nav-link"  %></li>
-        <% end %>
-</ul>
+<div class="container  is-flex is-justify-content-center mt-5 mb-5">
+  <%= form_with(url: search_amiibos_path, method: :get, local: true, class: "search-form") do %>
+    <div class="field has-addons">
+      <div class="control">
+        <%= text_field_tag(:keywords, nil, class: "input", placeholder: 'Search for Amiibos') %>
+      </div>
+      <div class="control">
+        <%= select_tag :amiibo_series_id, options_for_select([['All Amiibos', '']] +  AmiiboSeries.order(:name).collect { |series| [series.name, series.id] }), {class: "select mt-1 ml-1 mr-1"} %>
+      </div>
+      <div class="control">
+        <%= submit_tag('Search', class: 'button is-primary') %>
+      </div>
+    </div>
+  <% end %>
+</div>
 
 <details class="add-to-cart">
   <summary>
@@ -94,10 +120,10 @@ document.addEventListener("DOMContentLoaded", function() {
   </div>
 </details>
 
-
 <% if flash[:notice]%>
   <p class="add-to-cart-flash"><%= flash[:notice] %></p>
 <% end %>
+
 
 
 
