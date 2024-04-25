@@ -5,7 +5,7 @@
   <h2>Displaying <%= pluralize @character.amiibos.count, "Amiibo"%>:</h2>
   <br>
 
-  <div class="ml-3">
+  <div class="columns is-centered">
     <%= paginate @amiibos %>
   </div>
   <br>
