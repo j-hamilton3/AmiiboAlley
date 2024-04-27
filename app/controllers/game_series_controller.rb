@@ -1,6 +1,6 @@
 class GameSeriesController < ApplicationController
   def index
-    @game_series = GameSeries.order(:name).page(params[:page])
+    @game_series = GameSeries.order(:name).page(params[:page]).per(20)
   end
 
   def show
