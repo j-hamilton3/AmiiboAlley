@@ -2,7 +2,7 @@
 document.addEventListener("DOMContentLoaded", function() {
   document.querySelectorAll('.quantity-input').forEach(input => {
     input.addEventListener('change', function() {
-      let amiiboId = this.name.split('_')[1]; // Assuming name is "quantity_1"
+      let amiiboId = this.name.split('_')[1];
       document.getElementById(`quantity_input_${amiiboId}`).value = this.value;
     });
   });
@@ -10,18 +10,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // Get all "navbar-burger" elements
   const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
 
-  // Add a click event on each of them
   $navbarBurgers.forEach( el => {
     el.addEventListener('click', () => {
 
-      // Get the target from the "data-target" attribute
       const target = el.dataset.target;
       const $target = document.getElementById(target);
 
-      // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
       el.classList.toggle('is-active');
       $target.classList.toggle('is-active');
 
@@ -33,8 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <%= image_tag 'AmiiboAlleyLogo.PNG', alt: "Amiibo Logo" %>
-
+    <%= link_to root_path do %>
+      <%= image_tag 'AmiiboAlleyLogo.PNG', alt: "Amiibo Logo" %>
+    <% end %>
       <a class="navbar-burger" role="button" aria-label="menu" aria-expanded="false" data-target="amiibo-nav">
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
