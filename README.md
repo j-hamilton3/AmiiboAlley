@@ -2,6 +2,8 @@
 
 AmiiboAlley is an e-commerce web application built in Ruby on Rails, focusing on the data concerning currently released "Amiibo" figurines. Amiibos are NFC-enabled figurines produced by Nintendo, each based on characters from Nintendo or third-party franchises.
 
+Visit AmiiboAlley here: https://amiiboalley.fly.dev/
+
 # Browse Our Amiibo Selection
 
 Browse Amiibos by their Amiibo Series, Game Series, Character, or use our search functionality to find specific figures.
